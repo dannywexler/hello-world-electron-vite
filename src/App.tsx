@@ -3,21 +3,20 @@ import 'primereact/resources/primereact.min.css'
 import 'primereact/resources/themes/arya-blue/theme.css'
 import { Button } from 'primereact/button';
 
-import { useState } from 'react'
+import { useSnapshot } from 'valtio';
+import { store, setters } from './valtioStore'
 
 export default function App() {
-    const [count, setCount] = useState(0)
-
-    const increaseBy = (amount: number) => setCount(prev => prev + amount)
+    const snap = useSnapshot(store)
 
     return (
         <div className='flex'>
             <Button
                 className='mr-2'
                 label='+'
-                onClick={() => increaseBy(2)}
+                onClick={() => setters.increaseBy(2)}
             />
-            {` Current count is: ${count}`}
+            {` Current count is: ${snap.count}`}
         </div>
     )
 }
