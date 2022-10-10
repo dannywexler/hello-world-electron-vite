@@ -3,13 +3,10 @@ import 'primereact/resources/primereact.min.css'
 import 'primereact/resources/themes/arya-blue/theme.css'
 import { Button } from 'primereact/button';
 
-import { useState } from 'react'
+import { useStore } from './zustandStore'
 
 export default function App() {
-    const [count, setCount] = useState(0)
-
-    const increaseBy = (amount: number) => setCount(prev => prev + amount)
-
+    const {count, increaseBy} = useStore()
     return (
         <div className='flex'>
             <Button
