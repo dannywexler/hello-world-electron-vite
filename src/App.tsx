@@ -3,7 +3,7 @@ import 'primereact/resources/primereact.min.css'
 import 'primereact/resources/themes/arya-blue/theme.css'
 import { Button } from 'primereact/button';
 
-import { myActions, myState } from './easyPeasyStore';
+import { myActions, myState } from './main';
 
 export default function App() {
     const count = myState(state => state.count)
