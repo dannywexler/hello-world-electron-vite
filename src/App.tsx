@@ -3,12 +3,12 @@ import 'primereact/resources/primereact.min.css'
 import 'primereact/resources/themes/arya-blue/theme.css'
 import { Button } from 'primereact/button';
 
-import { useState } from 'react'
+import { myActions, myState } from './easyPeasyStore';
 
 export default function App() {
-    const [count, setCount] = useState(0)
+    const count = myState(state => state.count)
 
-    const increaseBy = (amount: number) => setCount(prev => prev + amount)
+    const increaseBy = myActions(actions => actions.increaseBy)
 
     return (
         <div className='flex'>
@@ -17,7 +17,7 @@ export default function App() {
                 label='+'
                 onClick={() => increaseBy(2)}
             />
-            {` Current count is: ${count}`}
+            {'Current count is: ' + count}
         </div>
     )
 }
