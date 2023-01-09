@@ -12,17 +12,20 @@ import App from './App'
 
 const store = createStore<CounterModel>(persist(counterModel),
     {
-        devTools: true
+        devTools: {
+            trace: true
+        }
     }
 );
 
 const typedHooks = createTypedHooks<CounterModel>();
 
+export const myState = typedHooks.useStoreState;
 export const myActions = typedHooks.useStoreActions;
 export const myDispatch = typedHooks.useStoreDispatch;
-export const myState = typedHooks.useStoreState;
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const appRoot = ReactDOM.createRoot(document.getElementById('root')!)
+appRoot.render(
     <React.StrictMode>
         <StoreProvider store={store}>
             <App />

@@ -8,14 +8,18 @@ import { myActions, myState } from './main';
 export default function App() {
     const count = myState(state => state.count)
 
-    const increaseBy = myActions(actions => actions.increaseBy)
+    // const increaseBy = myActions(actions => actions.increaseBy)
+    const actions = myActions(actions => actions)
 
     return (
         <div className='flex'>
             <Button
                 className='mr-2'
                 label='+'
-                onClick={() => increaseBy(2)}
+                onClick={() => {
+                    actions.increaseBy(2)
+                    actions.nested.nestedToggle(true)
+                }}
             />
             {'Current count is: ' + count}
         </div>
